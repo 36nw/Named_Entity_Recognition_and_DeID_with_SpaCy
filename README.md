@@ -18,30 +18,36 @@ This project demonstrates how to use NLTK (Natural Language Toolkit) for text pr
 
 To use the scripts in this repository, you'll need to have Python installed. Additionally, install the required Python packages using pip:
 
-```bash
+bash
 pip install nltk wordcloud matplotlib
-```
+
 
 After installing the required packages, you will also need to download additional NLTK resources.
 
-```bash
+bash
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
-```
 
 ## Usage
 
-**1. Preprocessing**: This section contains functions for tokenizing the text, removing stopwords, and applying stemming.
+**1. Preprocessing**: 
+- The preprocessing steps involve tokenizing the raw text from a webpage, cleaning it by removing stopwords and punctuation, and preparing it for analysis. This process is done using libraries like nltk, re, and string for tokenization and filtering.
+- The text is first scraped from a webpage using the scrape_webpage function. Then, the text is tokenized into words, and stop words and punctuation are removed using nltk's built-in stopwords and a custom list of punctuation characters.
+- The cleaned text is prepared for further analysis by computing word frequencies and sentence scores.
 
-**2. Analysis**: This section includes code for basic text analysis, such as word frequency distribution and generating statistics about the text.
+**2. Analysis**: 
+- In this section, word frequency distributions are calculated using nltk.FreqDist, which provides insights into how often certain words appear in the document. This helps identify key terms in the text.
+- Sentence scores are calculated based on the frequency of the words in each sentence, with more frequent words leading to higher scores. The sentences are then sorted by their scores.
+- Additionally, N-gram models (bigrams, trigrams, etc.) are generated, and their frequencies are computed using nltk.util.ngrams and FreqDist. These N-grams help in analyzing the relationships between adjacent words, adding another layer of insight into the content of the text.
 
-**3. Visualization**: This section demonstrates how to create and display word clouds from the processed text data.
+**3. Visualization**: 
+- After generating N-grams, the frequency distributions are visualized using nltk.FreqDist.plot(), which displays the most common N-grams in the text. This allows for a graphical representation of which word combinations are most frequent.
+- Additionally, the most common N-grams (bigrams, trigrams, etc.) are printed out to give a textual representation of the frequent phrases within the text.
 
 ## Data
 
-The data used in this project is from "Harry Potter and the Sorcerer's Stone." Make sure you have the text file of the book available in the project directory. You can use a publicly available version or any other source you prefer.Data
-The data used in this project is from "Harry Potter and the Sorcerer's Stone." Make sure you have the text file of the book available in the project directory. You can use a publicly available version or any other source you prefer.
+The data for this project is scraped from web pages using BeautifulSoup. It consists of plain text extracted from paragraphs on the page (e.g., from Wikipedia). The text is then processed through tokenization, stopword removal, and punctuation filtering. The dataset is used for text summarization tasks, focusing on calculating word frequencies and generating summaries based on sentence, word count, or percentage.
 
 ## License
 
