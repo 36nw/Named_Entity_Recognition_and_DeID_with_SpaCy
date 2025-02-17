@@ -1,5 +1,5 @@
 # Text Summarization Using Web Scraping and NLTK
-This repository contains Python scripts for text preprocessing, analysis, and visualization using NLTK and word clouds. The primary focus is on the text from "Harry Potter and the Sorcerer's Stone," but the techniques and methods are applicable to other text datasets as well.
+This repository contains Python scripts for web scraping and text summarization. Using BeautifulSoup, the script extracts content from the Wikipedia page on Natural Language Processing. The project includes Python-based implementations for text preprocessing, word frequency analysis, and sentence ranking. It also includes both word frequency and N-gram-based techniques for summarization, comparing the performance of each method to evaluate the quality of the summaries produced.
 
 ## Table of Contents
 
