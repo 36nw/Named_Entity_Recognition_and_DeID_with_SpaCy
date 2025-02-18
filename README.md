@@ -1,5 +1,4 @@
 # Named Entity Recognition and De-Identification with SpaCy
-# Named_Entity_Recognition_and_DeID_with_SpaCy
 This repository contains Python scripts for performing Named Entity Recognition (NER) and De-identification on text using SpaCy. The goal of this project is to extract named entities from text data and then replace personally identifiable information (such as names) with a placeholder ([REDACTED]) to preserve privacy. The project utilizes a news article as an example for NER and de-identification tasks.
 
 ## Table of Contents
