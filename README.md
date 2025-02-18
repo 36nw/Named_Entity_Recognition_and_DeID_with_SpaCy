@@ -1,5 +1,6 @@
-# Text Summarization Using Web Scraping and NLTK
-This repository contains Python scripts for web scraping and text summarization. Using BeautifulSoup, the script extracts content from the Wikipedia page on Natural Language Processing. The project includes Python-based implementations for text preprocessing, word frequency analysis, and sentence ranking. It also includes both word frequency and N-gram-based techniques for summarization, comparing the performance of each method to evaluate the quality of the summaries produced.
+# Named Entity Recognition and De-Identification with SpaCy
+# Named_Entity_Recognition_and_DeID_with_SpaCy
+This repository contains Python scripts for performing Named Entity Recognition (NER) and De-identification on text using SpaCy. The goal of this project is to extract named entities from text data and then replace personally identifiable information (such as names) with a placeholder ([REDACTED]) to preserve privacy. The project utilizes a news article as an example for NER and de-identification tasks.
 
 ## Table of Contents
 
@@ -12,48 +13,81 @@ This repository contains Python scripts for web scraping and text summarization.
 
 ## Overview
 
-This project demonstrates how to use NLTK (Natural Language Toolkit) for text preprocessing tasks such as tokenization, stopword removal, and stemming. It also covers basic text analysis and visualization using word clouds to gain insights into the text data.
+This project involves two main tasks:
+1. **Named Entity Recognition (NER)**: Identifying and classifying entities (e.g., persons, organizations, dates, etc.) in text using the SpaCy library.
+2. **De-identification**: Replacing identified named entities, specifically person names, with "[REDACTED]" to ensure privacy and anonymity.
+
+The script also demonstrates text processing steps such as scraping a webpage for text, counting entities, tokenizing sentences, and visualizing the entities using SpaCy’s built-in visualization tools.
 
 ## Installation
 
-To use the scripts in this repository, you'll need to have Python installed. Additionally, install the required Python packages using pip:
+Make sure you have Python installed on your machine. You can install the necessary libraries using pip:
 
-bash
-pip install nltk wordcloud matplotlib
+```bash
+pip install spacy requests beautifulsoup4
+python -m spacy download en_core_web_sm
+```
+This will install:
 
-
-After installing the required packages, you will also need to download additional NLTK resources.
-
-bash
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
+- **SpaCy:** A powerful NLP library.
+- **Requests:** For making HTTP requests to fetch webpage data.
+- **BeautifulSoup4:** For parsing HTML and extracting text from webpages.
 
 ## Usage
 
-**1. Preprocessing**: 
-- The preprocessing steps involve tokenizing the raw text from a webpage, cleaning it by removing stopwords and punctuation, and preparing it for analysis. This process is done using libraries like nltk, re, and string for tokenization and filtering.
-- The text is first scraped from a webpage using the scrape_webpage function. Then, the text is tokenized into words, and stop words and punctuation are removed using nltk's built-in stopwords and a custom list of punctuation characters.
-- The cleaned text is prepared for further analysis by computing word frequencies and sentence scores.
+To use this project, follow these steps:
 
-**2. Analysis**: 
-- In this section, word frequency distributions are calculated using nltk.FreqDist, which provides insights into how often certain words appear in the document. This helps identify key terms in the text.
-- Sentence scores are calculated based on the frequency of the words in each sentence, with more frequent words leading to higher scores. The sentences are then sorted by their scores.
-- Additionally, N-gram models (bigrams, trigrams, etc.) are generated, and their frequencies are computed using nltk.util.ngrams and FreqDist. These N-grams help in analyzing the relationships between adjacent words, adding another layer of insight into the content of the text.
+1. Clone the repository:
 
-**3. Visualization**: 
-- After generating N-grams, the frequency distributions are visualized using nltk.FreqDist.plot(), which displays the most common N-grams in the text. This allows for a graphical representation of which word combinations are most frequent.
-- Additionally, the most common N-grams (bigrams, trigrams, etc.) are printed out to give a textual representation of the frequent phrases within the text.
+    ```bash
+    git clone https://github.com/yourusername/Named_Entity_Recognition_and_DeID_with_SpaCy.git
+    cd Named_Entity_Recognition_and_DeID_with_SpaCy
+    ```
+
+2. Install the necessary dependencies by running:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    Alternatively, you can manually install the dependencies:
+
+    ```bash
+    pip install spacy requests beautifulsoup4
+    python -m spacy download en_core_web_sm
+    ```
+
+3. Run the Python script that fetches text from a webpage, performs NER, and then de-identifies the person names:
+
+    ```bash
+    python ner_and_deid.py
+    ```
+
+    This will:
+    - Scrape the text from the specified webpage.
+    - Perform Named Entity Recognition (NER) using the SpaCy model.
+    - De-identify all person names in the text by replacing them with "[REDACTED]".
+    - Visualize the entities and the modified text using SpaCy's `displacy` tool.
+    
+4. Check the output to see:
+    - A list of named entities identified in the text.
+    - The visualization of the named entities using `displacy`.
+    - The de-identified text with person names replaced by "[REDACTED]".
+    - A visualization of the de-identified text with the modified entities.
 
 ## Data
 
-The data for this project is scraped from web pages using BeautifulSoup. It consists of plain text extracted from paragraphs on the page (e.g., from Wikipedia). The text is then processed through tokenization, stopword removal, and punctuation filtering. The dataset is used for text summarization tasks, focusing on calculating word frequencies and generating summaries based on sentence, word count, or percentage.
+The data for this project is sourced from a publicly available news article on the NBC News website. The webpage is scraped using the requests and BeautifulSoup libraries to extract the text, which is then processed with SpaCy.
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Notes
+
+- This project uses SpaCy's pre-trained model en_core_web_sm. For better accuracy, you may consider using the medium or large models (en_core_web_md or en_core_web_lg).
+- The de-identification process in this project only focuses on person names (label "PERSON"). You can extend it to other types of entities (like organizations or locations) by modifying the code.
+- Ensure you have Jupyter Notebook or another compatible environment to view the visualizations using displacy.render().
 
 For any questions or issues, please feel free to open an issue or pull request in this repository.
 
